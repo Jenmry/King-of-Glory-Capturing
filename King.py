@@ -26,10 +26,8 @@ class King(object):
         for i, index in enumerate(lists, 0):
             self.names.append(index['cname'])
             self.ids.append(index['ename'])
-            response2 = requests.session().get(url=self.detail_url + '{}.shtml'.format(self.ids[i]),
-                                               headers=self.headers)
-            index_re = re.findall(r'<ul class="pic-pf-list pic-pf-list3" data-imgname="(.*?)">',
-                                  response2.content.decode('gbk'))
+            response2 = requests.session().get(url=self.detail_url + '{}.shtml'.format(self.ids[i]), headers=self.headers)
+            index_re = re.findall(r'<ul class="pic-pf-list pic-pf-list3" data-imgname="(.*?)">', response2.content.decode('gbk'))
             self.skin_number.append(len(index_re[0].split('|')))
             mode = []
             for k in range(self.skin_number[i]):
@@ -51,8 +49,7 @@ class King(object):
                 if not path:
                     os.makedirs('D:/Pycharm/King_of_Pic/King/' + self.names[i])
                 with open(
-                        'D:/Pycharm/King_of_Pic/King/' + self.names[i] + '/' + self.skin_name[i][j] + '.jpg',
-                        'wb') as f:
+                        'D:/Pycharm/King_of_Pic/King/' + self.names[i] + '/' + self.skin_name[i][j] + '.jpg', 'wb') as f:
                     print(self.skin_name[i][j] + 'downloading......')
                     f.write(resp.content)
                     f.close()

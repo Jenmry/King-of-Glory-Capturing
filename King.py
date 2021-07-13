@@ -69,5 +69,5 @@ if __name__ == '__main__':
     beginTimes = time.strftime('%H:%M:%S', time.localtime(time.time())).split(':')
     print('结束时间：' + time.strftime('%H:%M:%S', time.localtime(time.time())))
     beginTimes1 = int(beginTimes[0]) * 3600 + int(beginTimes[1]) * 60 + int(beginTimes[2])
-    print('共保存{}'.format(number))
+    print('共保存{}个英雄'.format(number))
     print('所有图片下载保存用时：' + str(beginTimes1 - beginTime1) + '秒')
